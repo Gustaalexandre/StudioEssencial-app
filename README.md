@@ -1,0 +1,1 @@
+# StudioEssencial-app
