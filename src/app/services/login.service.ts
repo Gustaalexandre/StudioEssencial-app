@@ -20,15 +20,20 @@ export class LoginService {
   }
 
   salvarToken(token: string): void {
-    window.localStorage.setItem('Token', token);
+    if (typeof window !== 'undefined' && window.localStorage)
+      localStorage.setItem('Token', token);
   }
 
   obterToken(): string {
-    return localStorage.getItem('Token') || "";
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return localStorage.getItem('Token') || "";
+    }
+    return "";
   }
 
   limparToken(): void {
-    localStorage.removeItem('Token');
+    if (typeof window !== 'undefined' && window.localStorage)
+      localStorage.removeItem('Token');
   }
 
   extrairDadosToken(): any | null {
@@ -49,7 +54,7 @@ export class LoginService {
         'Authorization': 'Bearer ' + token
       })
     };
-  }    
+  }
 }
 
 
