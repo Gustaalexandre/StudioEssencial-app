@@ -20,7 +20,7 @@ export class LoginService {
   }
 
   salvarToken(token: string): void {
-    localStorage.setItem('Token', token);
+    window.localStorage.setItem('Token', token);
   }
 
   obterToken(): string {
