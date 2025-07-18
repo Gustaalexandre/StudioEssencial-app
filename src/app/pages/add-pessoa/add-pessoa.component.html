@@ -1,0 +1,71 @@
+<div class="container mt-4">
+    <h2 class="mb-4 border-bottom border-3 border-danger text-center">Usuário</h2>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <div class="col-md-9">
+                <label for="nome" class="form-label" >Nome</label>
+                <input type="text" id="nome" class="form-control" formControlName="nome">
+            </div>
+            <div class="col-md-3 mt-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="sexo" id="sexoM" value="M">
+                    <label class="form-check-label" for="sexoM">
+                        Masculino
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio"  id="sexoF" formControlName="sexo" value="F">
+                    <label class="form-check-label" for="sexoF">
+                        Feminino
+                    </label>
+                </div>
+            </div>
+            <div class = "col-md-12">
+                <label for="endereco" class = "form-label">Endereço</label>
+                <input type = "text" class = "form-control" id = "endereco"  formControlName="endereco">
+            </div>
+
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-3 mb-3">
+                <label for="login" class="form-label">Login</label>
+                <input id="login" type="text" class="form-control" formControlName="login" (blur)="verificarLogin()">
+                <div *ngIf="mensagemErroLogin" class="text-danger small mt-1">
+                    {{ mensagemErroLogin }}
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input id="senha" type="password" class="form-control" formControlName="senha">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="nivelAcesso" class="form-label">Nível de Acesso</label>
+                <select class="form-select" aria-label="Default select example" formControlName="nivelAcesso">
+                    <option value="" disabled selected>Selecione um nível de acesso</option>
+                    <option value="FUNCIONARIO">FUNCIONARIO</option>
+                    <option value="CLIENTE">CLIENTE</option>
+                </select>
+            </div>
+        </div>
+        <!-- <div class="col-md-6 mb-3">
+                <label for="pessoaId" class="form-label">Pessoa</label>
+                <select class="form-select" aria-label="Default select example" formControlName="pessoaId">
+                    <option [ngValue]="null" disabled selected>Selecione uma pessoa</option>
+                    <option *ngFor="let p of listaPessoas" [ngValue]="p.id">{{ p.nome }}</option>
+                </select>
+            </div> -->
+        
+
+        <div class="d-flex justify-content-between mt-3">
+            <a routerLink="" class="btn btn-secondary">
+                Cancelar
+            </a>
+            <button type="submit" class="btn btn-success" [disabled]="formGroup.invalid">
+                Salvar
+            </button>
+        </div>
+
+    </form>
+</div>
