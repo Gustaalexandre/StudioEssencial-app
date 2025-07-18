@@ -26,7 +26,7 @@ export class AddUsuarioComponent {
       login: ['', Validators.required],
       senha: ['', Validators.required],
       nivelAcesso: ['', Validators.required],
-      pessoa: ['', Validators.required]
+      pessoaId: ['', Validators.required]
     });
 
     this.mensagemErroLogin = "";
@@ -37,7 +37,9 @@ export class AddUsuarioComponent {
   }
 
   onSubmit(): void {
+
     if (this.formGroup.valid) {
+
       this.service.salvar(this.formGroup.value).subscribe({
         next: () => {
           alert('Usuario criado com sucesso!');
@@ -48,6 +50,7 @@ export class AddUsuarioComponent {
           alert('Erro ao criar usuario. Tente novamente.');
         }
       });
+      
     }
   }
 

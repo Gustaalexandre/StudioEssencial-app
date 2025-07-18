@@ -5,5 +5,5 @@ export class Usuario {
     login?: string;
     senha?: string;
     nivelAcesso?: string;
-    pessoa?: Pessoa;
+    pessoaId?: number;
 }

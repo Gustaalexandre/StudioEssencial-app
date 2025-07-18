@@ -26,10 +26,10 @@
             </div>
         </div>
          <div class="col-md-6 mb-3">
-                <label for="pessoa" class="form-label">Pessoa</label>
-                <select class="form-select" aria-label="Default select example" formControlName="pessoa">
+                <label for="pessoaId" class="form-label">Pessoa</label>
+                <select class="form-select" aria-label="Default select example" formControlName="pessoaId">
                     <option [ngValue]="null" disabled selected>Selecione uma pessoa</option>
-                    <option *ngFor="let pessoa of listaPessoas" [ngValue]="pessoa">{{ pessoa.nome }}</option>
+                    <option *ngFor="let p of listaPessoas" [ngValue]="p.id">{{ p.nome }}</option>
                 </select>
             </div>
 
