@@ -34,4 +34,8 @@ export class ProcedimentoService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`, this.loginService.gerarCabecalhoHTTP());
   }
 
+  verificarProcedimento(procedimento: string): Observable<boolean> {
+    const url = `${this.apiUrl}/existe?procedimento=${encodeURIComponent(procedimento)}`;
+    return this.http.get<boolean>(url);
+  }  
 }

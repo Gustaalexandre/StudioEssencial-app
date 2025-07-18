@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../services/login.service';
 // import { LoginService } from '../../services/login.service';
 
 @Component({
@@ -13,25 +14,26 @@ import { CommonModule } from '@angular/common';
 
 export class MenuComponent {
 
-  // nivel = 'NIVEL0';
+  nivel = 'NIVEL0';
 
-  // menu = [
-  //   // { descricao: 'Tipos', rota: '/tipos', niveis: ['NIVEL1', 'NIVEL2', 'NIVEL3'] },
-  //   // { descricao: 'Produtos', rota: '/produtos', niveis: ['NIVEL1', 'NIVEL2'] },
-  //   // { descricao: 'Usuários', rota: '/usuarios', niveis: ['NIVEL1'] },
-  //   // { descricao: 'Pedidos', rota: '/pedidos', niveis: ['NIVEL2', 'NIVEL3'] },
-  // ];
+  menu = [
+    { descricao: 'Procedimentos', rota: '/procedimentos', niveis: ['FUNCIONARIO'] },
+    // { descricao: 'Produtos', rota: '/produtos', niveis: ['NIVEL1', 'NIVEL2'] },
+    // { descricao: 'Usuários', rota: '/usuarios', niveis: ['NIVEL1'] },
+    // { descricao: 'Pedidos', rota: '/pedidos', niveis: ['NIVEL2', 'NIVEL3'] },
+  ];
 
-  // constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService) { }
 
-  // ngOnInit(): void {
-  //   const dadosToken = this.loginService.extrairDadosToken();
-  //   if (dadosToken && dadosToken.roles) {
-  //     // Remove "ROLE_" com a empressão regular /^ROLE_/
-  //     this.nivel = dadosToken.roles.replace(/^ROLE_/, '');
-  //   } else {
-  //     console.warn('Não foi possível determinar o nível do usuário a partir do token.');
-  //   }
-  // }
+  ngOnInit(): void {
+    const dadosToken = this.loginService.extrairDadosToken();
+    console.log('Token decodificado:', dadosToken);
+    if (dadosToken && dadosToken.roles) {
+      // Remove "ROLE_" com a empressão regular /^ROLE_/
+      this.nivel = dadosToken.roles.replace(/^ROLE_/, '');
+    } else {
+      console.warn('Não foi possível determinar o nível do usuário a partir do token.');
+    }
+  }
 }
 
