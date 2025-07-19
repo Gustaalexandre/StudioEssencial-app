@@ -17,7 +17,7 @@ export class MenuComponent {
   nivel = 'NIVEL0';
 
   menu = [
-    { descricao: 'Procedimentos', rota: '/procedimentos', niveis: ['FUNCIONARIO'] },
+    { descricao: 'Procedimentos', rota: '/add-procedimento', niveis: ['FUNCIONARIO'] },
     // { descricao: 'Produtos', rota: '/produtos', niveis: ['NIVEL1', 'NIVEL2'] },
     // { descricao: 'Usuários', rota: '/usuarios', niveis: ['NIVEL1'] },
     // { descricao: 'Pedidos', rota: '/pedidos', niveis: ['NIVEL2', 'NIVEL3'] },
@@ -26,14 +26,20 @@ export class MenuComponent {
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+
     const dadosToken = this.loginService.extrairDadosToken();
-    console.log('Token decodificado:', dadosToken);
+    // console.log('Token decodificado:', dadosToken);
     if (dadosToken && dadosToken.roles) {
       // Remove "ROLE_" com a empressão regular /^ROLE_/
       this.nivel = dadosToken.roles.replace(/^ROLE_/, '');
     } else {
       console.warn('Não foi possível determinar o nível do usuário a partir do token.');
     }
+  }
+
+  logout() {
+    this.loginService.limparToken();
+    window.location.href = "";
   }
 }
 

@@ -37,7 +37,8 @@ export class LoginComponent {
         next: (resposta) => {
           this.token = resposta;
           this.loginService.salvarToken(this.token.accessToken);
-          this.router.navigate(['/home']);
+          window.location.href='/home'; //tive que fazer assim para atulizar o menu ao entrar
+          // this.router.navigate(['/home']);
         },
         error: (err) => {
           alert('Login ou senha inválidos.');

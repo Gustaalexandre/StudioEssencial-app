@@ -38,6 +38,7 @@ export class LoginService {
 
   extrairDadosToken(): any | null {
     const token = this.obterToken();
+    console.warn('o Token é: ' + token);
     if (!token) return null;
     try {
       const dadosToken = jwtDecode(token);
