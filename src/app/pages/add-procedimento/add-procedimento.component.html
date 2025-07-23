@@ -9,8 +9,8 @@
                 <label for="nome" class="form-label">Nome</label>
                 <input id="nome" type="text" class="form-control" formControlName="nome"
                     (blur)="verificarProcedimento()">
-                <div *ngIf="mensagemErroLogin" class="text-danger small mt-1">
-                    {{ mensagemErroLogin }}
+                <div *ngIf="mensagemErroProcedimento" class="text-danger small mt-1">
+                    {{ mensagemErroProcedimento }}
                 </div>
             </div>
             <div class="col-md-3 mb-3">
@@ -29,7 +29,7 @@
 
 
             <div class="d-flex justify-content-between">
-                <a routerLink="/home" class="btn btn-secondary">
+                <a routerLink="/app-procedimento" class="btn btn-secondary">
                     Cancelar
                 </a>
                 <button type="submit" class="btn btn-success" [disabled]="formGroup.invalid">

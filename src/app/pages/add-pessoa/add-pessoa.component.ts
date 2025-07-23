@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UsuarioService } from '../../services/usuario.service';
-import { Router, ActivatedRoute, RouterModule } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule, withDebugTracing } from '@angular/router';
 import { PessoaService } from '../../services/pessoa.service';
 import { Pessoa } from '../../models/pessoa';
 import { Usuario } from '../../models/usuario';
@@ -65,7 +65,8 @@ export class AddPessoaComponent {
             next: () => {
               alert('Usuário criado com sucesso!');
               this.formGroup.reset();
-              this.router.navigate(['/home']);
+              this.router.navigate(['']);
+              // window.location.href='/home';
             },
             error: () => {
               alert('Erro ao criar usuário.');

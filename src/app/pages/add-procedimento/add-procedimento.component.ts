@@ -5,6 +5,7 @@ import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { Procedimento } from '../../models/procedimento';
 import { ProcedimentoService } from '../../services/procedimento.service';
 
+
 @Component({
   selector: 'add-procedimento',
   standalone: true,
@@ -15,7 +16,8 @@ import { ProcedimentoService } from '../../services/procedimento.service';
 export class AddProcedimentoComponent {
 
   formGroup: FormGroup;
-  mensagemErroLogin: string;
+  mensagemErroProcedimento: string;
+  procedimento!: Procedimento;
   listaProcedimentos: Procedimento[] = [];
 
   constructor(private formBuilder: FormBuilder, private service: ProcedimentoService, private route: ActivatedRoute, private router: Router) {
@@ -28,50 +30,88 @@ export class AddProcedimentoComponent {
       duracao: ['', Validators.required]
     });
 
-    this.mensagemErroLogin = "";
+    this.mensagemErroProcedimento = "";
   }
 
   ngOnInit(): void {
+
+    let id = Number(this.route.snapshot.paramMap.get('id'));
+    this.procedimento = new Procedimento();
+    if (id) {     
+      this.service.buscarPorId(id).subscribe(retorno => {     
+        this.procedimento = retorno;   
+        this.formGroup.patchValue({
+          nome: this.procedimento.nome,
+          descricao: this.procedimento.descricao,
+          preco: this.procedimento.preco,
+          duracao: this.procedimento.duracao
+        });
+      });
+    }
+
+    
+
   }
 
   onSubmit(): void {
 
-    if (this.formGroup.valid) {
+    // if (this.formGroup.valid) {
 
-      this.service.salvar(this.formGroup.value).subscribe({
+    //   this.service.salvar(this.formGroup.value).subscribe({
+    //     next: () => {
+    //       alert('Procedimento criado com sucesso!');
+    //       this.formGroup.reset();
+    //       this.router.navigate(['/home']);
+    //     },
+    //     error: () => {
+    //       alert('Erro ao criar procedimento. Tente novamente.');
+    //     }
+    //   });
+      
+    // }
+
+     if (this.formGroup.valid) {
+       this.procedimento.nome = this.formGroup.value.nome;
+      this.procedimento.descricao = this.formGroup.value.descricao;
+      this.procedimento.preco = this.formGroup.value.valor;
+      this.procedimento.duracao = this.formGroup.value.duracao;
+      this.service.salvar(this.procedimento).subscribe({
         next: () => {
-          alert('Procedimento criado com sucesso!');
+          alert('Registro salvo com sucesso!');
           this.formGroup.reset();
-          this.router.navigate(['/home']);
+          this.router.navigate(['/app-procedimento']);
         },
         error: () => {
-          alert('Erro ao criar procedimento. Tente novamente.');
+          alert('Erro ao salvar o registro. Tente novamente.');
         }
       });
-      
     }
+
   }
 
-
+  //não ta usando token.
   verificarProcedimento() {
-    const login = this.formGroup.get('procedimento')?.value;
-    this.mensagemErroLogin = "";
+    const procedimento = this.formGroup.get('nome')?.value;
+    this.mensagemErroProcedimento = "";
 
-    this.service.verificarProcedimento(login).subscribe({
+    this.service.verificarProcedimento(procedimento).subscribe({
       next: (existe: boolean) => {
         if (existe) {
-          this.mensagemErroLogin = "Login já cadastrado.";
-          this.formGroup.get('login')?.setErrors({ loginDuplicado: true });
+          this.mensagemErroProcedimento = "Procedimento já cadastrado.";
+          this.formGroup.get('nome')?.setErrors({ procedimentoDuplicado: true });
         } else {
-          this.mensagemErroLogin = "";
-          // Limpa o erro de loginDuplicado, se existir
-          this.formGroup.get('login')?.setErrors(null);
+          this.mensagemErroProcedimento = "";
+          // Limpa o erro de ProcedimentoDuplicado, se existir
+          this.formGroup.get('nome')?.setErrors(null);
         }
       },
       error: err => {
-        this.mensagemErroLogin = "Erro ao validar procedimento";
+        this.mensagemErroProcedimento = "Erro ao validar procedimento";
       }
     });
+
   }
+
+    
 
 }

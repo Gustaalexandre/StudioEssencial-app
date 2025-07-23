@@ -17,7 +17,7 @@ export class MenuComponent {
   nivel = 'NIVEL0';
 
   menu = [
-    { descricao: 'Procedimentos', rota: '/add-procedimento', niveis: ['FUNCIONARIO'] },
+    { descricao: 'Procedimentos', rota: '/app-procedimento', niveis: ['FUNCIONARIO'] },
     // { descricao: 'Produtos', rota: '/produtos', niveis: ['NIVEL1', 'NIVEL2'] },
     // { descricao: 'Usuários', rota: '/usuarios', niveis: ['NIVEL1'] },
     // { descricao: 'Pedidos', rota: '/pedidos', niveis: ['NIVEL2', 'NIVEL3'] },

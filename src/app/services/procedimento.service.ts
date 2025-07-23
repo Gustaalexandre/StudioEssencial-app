@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { appSettings } from '../app.config';
 import { LoginService } from './login.service';
 import { Procedimento } from '../models/procedimento';
+import { Token } from '../models/token';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +37,10 @@ export class ProcedimentoService {
   }
 
   verificarProcedimento(procedimento: string): Observable<boolean> {
-    const url = `${this.apiUrl}/existe?procedimento=${encodeURIComponent(procedimento)}`;
-    return this.http.get<boolean>(url);
-  }  
+    const url = `${this.apiUrl}/existe?nomeProcedimento=${encodeURIComponent(procedimento)}`;
+    return this.http.get<boolean>(url, this.loginService.gerarCabecalhoHTTP());
+  }
+
+
+
 }
