@@ -1,0 +1,37 @@
+<div class="container mt-4">  
+  <h2 class="mb-4 border-bottom border-3 border-danger text-center">Agendamentos</h2>
+
+  <div class="d-flex justify-content-end mb-2">
+    <a routerLink="/add-agendamento" routerLinkActive="active" class="btn btn-primary">Cadastrar</a>
+  </div>
+
+  <table class="table table-bordered table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th class="col-cliente">Cliente</th>
+        <th class="col-funcionario">Funcionario</th>
+        <th class="col-procedimento">Procedimento</th>
+        <th class = "col-data">Data</th>
+        <th class= "col-situacao">Situação</th>
+        <th class = "col-parcelas">Parcelas</th>
+        <th class = "col-valorTotal">Valor Total</th>
+        <th class="text-center">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let objeto of lista">
+        <td>{{ objeto.cliente?.nome }}</td>
+        <td>{{ objeto.funcionario?.nome }}</td>
+        <td>{{ objeto.procedimentoId }}</td>
+        <td>{{ objeto.data }}</td>
+        <td>{{ objeto.situacao}}</td>
+        <td>{{ objeto.numeroParcelas }}</td>
+        <td>{{ objeto.valorTotal | currency:'BRL':'symbol':'1.2-2' }}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-warning me-2" (click)="editar(objeto.id)">Editar</button>
+          <button class="btn btn-sm btn-danger" (click)="excluir(objeto.id!)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

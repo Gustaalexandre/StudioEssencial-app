@@ -1,0 +1,104 @@
+<div class="container mt-4">
+    <h2 class="mb-4 border-bottom border-3 border-danger">Agendamento</h2>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <!-- <div class="col-md-3 mb-3">
+                <label for="clienteId" class="form-label">ClienteId</label>
+                <input id="clienteId" type="number" class="form-control" formControlName="clienteId">
+            </div> -->
+            <div class="col-md-3 mb-3">
+                <label for="clienteId" class="form-label">Cliente</label>
+                <select id="clienteId" class="form-select" formControlName="clienteId">
+                    <option [ngValue]="null" disabled selected>Selecione o cliente</option>
+                    <option *ngFor="let cliente of listaClientes" [ngValue]="cliente.id">{{ cliente.nome }}</option>
+                </select>
+            </div>
+
+
+
+            <!-- <div class="col-md-3 mb-3">
+                <label for="funcionarioId" class="form-label">FuncionarioId</label>
+                <input id="funcionarioId" type="number" class="form-control" formControlName="funcionarioId">
+            </div> -->
+
+            <div class="col-md-3 mb-3">
+                <label for="funcionarioId" class="form-label">Funcionário</label>
+                <select id="funcionarioId" class="form-select" formControlName="funcionarioId">
+                    <option [ngValue]="null" disabled selected>Selecione o funcionário</option>
+                    <option *ngFor="let funcionario of listaFuncionarios" [ngValue]="funcionario.id">{{ funcionario.nome
+                        }}</option>
+                </select>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="procedimentoId" class="form-label">Procedimento</label>
+                <select class="form-select" aria-label="Default select example" formControlName="procedimentoId">
+                    <option [ngValue]="null" disabled selected>Selecione um tipo</option>
+                    <option *ngFor="let procedimento of listaProcedimentos" [ngValue]="procedimento.id">{{
+                        procedimento.nome }}</option>
+                </select>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label for="data" class="form-label">Data</label>
+                <input id="data" type="date" class="form-control" formControlName="data">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="situacao" class="form-label">Situação</label>
+                <select id="situacao" class="form-select" formControlName="situacao">
+                    <option [ngValue]="null" disabled selected>Selecione a situação</option>
+                    <option value="PENDENTE">PENDENTE</option>
+                    <option value="CONFIRMADO">CONFIRMADO</option>
+                    <option value="CANCELADO">CANCELADO</option>
+                </select>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="numeroParcelas" class="form-label">Parcelas</label>
+                <input id="numeroParcelas" type="number" class="form-control" formControlName="numeroParcelas">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="valorTotal" class="form-label">ValorTotal</label>
+                <input id="valorTotal" type="number" class="form-control" formControlName="valorTotal">
+            </div>
+
+
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+            <a routerLink="/app-agendamento" class="btn btn-secondary">
+                Cancelar
+            </a>
+            <button type="submit" class="btn btn-success" [disabled]="formGroup.invalid">
+                Salvar
+            </button>
+        </div>
+        <!-- <div class="row">
+            <div class="col-md-3 mb-3">
+                <label for="valor" class="form-label">Valor</label>
+                <input id="valor" type="text" class="form-control" formControlName="valor" mask="separator.2"
+                    prefix="R$ ">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="estoque" class="form-label">Estoque</label>
+                <input id="estoque" type="text" class="form-control" formControlName="estoque" mask="0*">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="tipo" class="form-label">Tipo</label>
+                <select class="form-select" aria-label="Default select example" formControlName="tipo">
+                    <option [ngValue]="null" disabled selected>Selecione um tipo</option>
+                    <option *ngFor="let tipo of listaTipos" [ngValue]="tipo">{{ tipo.descricao }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a routerLink="/produtos" class="btn btn-secondary">
+                Cancelar
+            </a>
+            <button type="submit" class="btn btn-success" [disabled]="formGroup.invalid">
+                Salvar
+            </button>
+        </div> -->
+
+    </form>
+</div>
