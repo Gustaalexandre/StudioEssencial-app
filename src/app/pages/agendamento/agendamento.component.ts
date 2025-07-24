@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router, RouterModule} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Agendamento } from '../../models/agendamento';
 import { AgendamentoService } from '../../services/agendamento.service';
+import { Procedimento } from '../../models/procedimento';
 
 @Component({
   selector: 'app-agendamento',
@@ -14,6 +15,8 @@ import { AgendamentoService } from '../../services/agendamento.service';
 
 export class AgendamentoComponent {
   lista: Agendamento[] = [];
+  listaProcedimentos: Procedimento[] = [];
+  mapaProcedimentos: { [key: number]: string } = {};
 
   constructor(private service: AgendamentoService, private route: ActivatedRoute, private router: Router) {
   }
@@ -46,7 +49,7 @@ export class AgendamentoComponent {
     }
   }
 
-  editar(id: number): void {    
-    this.router.navigate(['/add-agendamento', id]);    
+  editar(id: number): void {
+    this.router.navigate(['/add-agendamento', id]);
   }
 }
