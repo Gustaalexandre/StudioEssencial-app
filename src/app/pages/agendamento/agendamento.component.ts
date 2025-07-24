@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Agendamento } from '../../models/agendamento';
 import { AgendamentoService } from '../../services/agendamento.service';
 import { Procedimento } from '../../models/procedimento';
+import { ProcedimentoService } from '../../services/procedimento.service';
 
 @Component({
   selector: 'app-agendamento',
@@ -23,6 +24,7 @@ export class AgendamentoComponent {
 
   ngOnInit(): void {
     this.carregarLista();
+  
   }
 
   carregarLista(): void {
@@ -52,4 +54,7 @@ export class AgendamentoComponent {
   editar(id: number): void {
     this.router.navigate(['/add-agendamento', id]);
   }
+
+
+
 }

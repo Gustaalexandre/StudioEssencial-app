@@ -28,9 +28,7 @@ export class AddAgendamentoComponent {
   listaFuncionarios: Pessoa[] = [];
   agendamento!: Agendamento;
 
-  totalPendentes: number = 0;
-  totalConfirmados: number = 0;
-  totalCancelados: number = 0;
+
 
   constructor(private formBuilder: FormBuilder, private agendamentoService: AgendamentoService, private route: ActivatedRoute, private router: Router, private procedimentoService: ProcedimentoService, private pessoaService: PessoaService, private usuarioService: UsuarioService) {
 
@@ -42,7 +40,7 @@ export class AddAgendamentoComponent {
       data: ['', Validators.required],
       situacao: ['', Validators.required],
       numeroParcelas: ['', Validators.required],
-      valorTotal: [{ value: '', disabled: true }, Validators.required]
+      valorTotal: ['', Validators.required]
     });
   }
 
@@ -50,6 +48,15 @@ export class AddAgendamentoComponent {
     this.carregarListaProcedimento();
     this.carregarListaClientes();
     this.carregarListaFuncionarios();
+
+    this.formGroup.get('procedimentoId')?.valueChanges.subscribe((id: number) => {
+      const procedimentoSelecionado = this.listaProcedimentos.find(p => p.id === id);
+      if (procedimentoSelecionado) {
+        this.formGroup.patchValue({
+          valorTotal: procedimentoSelecionado.preco
+        });
+      }
+    });
 
     let id = Number(this.route.snapshot.paramMap.get('id'));
     this.agendamento = new Agendamento();
@@ -149,9 +156,5 @@ export class AddAgendamentoComponent {
     });
   }
 
-  contarSituacoes(): void {
-  this.totalPendentes = this.lista.filter(item => item.situacao === 'PENDENTE').length;
-  this.totalConfirmados = this.lista.filter(item => item.situacao === 'CONFIRMADO').length;
-  this.totalCancelados = this.lista.filter(item => item.situacao === 'CANCELADO').length;
-}
+
 }
