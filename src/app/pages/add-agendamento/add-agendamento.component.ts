@@ -28,6 +28,10 @@ export class AddAgendamentoComponent {
   listaFuncionarios: Pessoa[] = [];
   agendamento!: Agendamento;
 
+  totalPendentes: number = 0;
+  totalConfirmados: number = 0;
+  totalCancelados: number = 0;
+
   constructor(private formBuilder: FormBuilder, private agendamentoService: AgendamentoService, private route: ActivatedRoute, private router: Router, private procedimentoService: ProcedimentoService, private pessoaService: PessoaService, private usuarioService: UsuarioService) {
 
     this.formGroup = this.formBuilder.group({
@@ -38,7 +42,7 @@ export class AddAgendamentoComponent {
       data: ['', Validators.required],
       situacao: ['', Validators.required],
       numeroParcelas: ['', Validators.required],
-      valorTotal: ['', Validators.required]
+      valorTotal: [{ value: '', disabled: true }, Validators.required]
     });
   }
 
@@ -144,4 +148,10 @@ export class AddAgendamentoComponent {
       error: () => alert('Erro ao carregar usuários.')
     });
   }
+
+  contarSituacoes(): void {
+  this.totalPendentes = this.lista.filter(item => item.situacao === 'PENDENTE').length;
+  this.totalConfirmados = this.lista.filter(item => item.situacao === 'CONFIRMADO').length;
+  this.totalCancelados = this.lista.filter(item => item.situacao === 'CANCELADO').length;
+}
 }
