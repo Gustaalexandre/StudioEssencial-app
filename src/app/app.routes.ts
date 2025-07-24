@@ -12,6 +12,7 @@ import { TelefoneComponent } from './pages/telefone/telefone.component';
 import { AddTelefoneComponent } from './pages/add-telefone/add-telefone.component';
 import { PagamentoComponent } from './pages/pagamento/pagamento.component';
 import { AddPagamentoComponent } from './pages/add-pagamento/add-pagamento.component';
+ import { HomeClienteComponent } from './pages/home-cliente/home-cliente.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,4 +31,7 @@ export const routes: Routes = [
   // { path: 'app-telefone', component: TelefoneComponent },
   // { path: 'add-telefone', component: AddTelefoneComponent },
   // { path: 'add-telefone/:id', component: AddTelefoneComponent },
+
+  { path: 'home-cliente', component: HomeClienteComponent },
+ 
 ];

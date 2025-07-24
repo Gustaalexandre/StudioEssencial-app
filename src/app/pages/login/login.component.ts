@@ -15,7 +15,11 @@ export class LoginComponent {
   formGroup: FormGroup;
   token: Token;
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private router: Router
+  ) {
     this.formGroup = this.formBuilder.group({
       login: ['', Validators.required],
       senha: ['', Validators.required]
@@ -25,20 +29,26 @@ export class LoginComponent {
   }
 
   ngOnInit(): void {
-    this.loginService.limparToken()
+    this.loginService.limparToken();
   }
-  
-    onSubmit(): void {
-    if (this.formGroup.valid) {      
-      
-      const formValue = this.formGroup.value;
 
+  onSubmit(): void {
+    if (this.formGroup.valid) {
+      const formValue = this.formGroup.value;
       this.loginService.autenticar(formValue.login, formValue.senha).subscribe({
         next: (resposta) => {
           this.token = resposta;
           this.loginService.salvarToken(this.token.accessToken);
-          window.location.href='/home'; //tive que fazer assim para atulizar o menu ao entrar
-          // this.router.navigate(['/home']);
+
+          // Decodifica o token para pegar o nível de acesso
+          const dadosToken = this.loginService.extrairDadosToken();
+          if (dadosToken && dadosToken.roles && dadosToken.roles.includes('CLIENTE')) {
+            // this.router.navigate(['/home-cliente']);
+            window.location.href = '/home-cliente';
+          } else {
+            // this.router.navigate(['/home']);
+            window.location.href = '/home';
+          }
         },
         error: (err) => {
           alert('Login ou senha inválidos.');
