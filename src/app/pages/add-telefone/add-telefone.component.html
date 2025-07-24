@@ -1,41 +1,21 @@
 <div class="container mt-4 card p-4">
-    <h2 class="mb-4 border-bottom border-3 border-danger text-center">Telefone</h2>
+    <h2 class="mb-4 border-bottom border-3 border-danger text-center">Telefones</h2>
 
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
         <div class="row">
             <div class="col-md-6 mb-3">
-                <label for="nome" class="form-label">Nome</label>
-                <input id="nome" type="text" class="form-control" formControlName="nome"
+                <label for="pessoa" class="form-label">Pessoa</label>
+                <input id="pessoa" type="text" class="form-control" formControlName="pessoa"
                     (blur)="verificarTelefone()">
                 <div *ngIf="mensagemErroTelefone" class="text-danger small mt-1">
                     {{ mensagemErroTelefone }}
                 </div>
             </div>
             <div class="col-md-3 mb-3">
-                <label for="preco" class="form-label">Preço</label>
-                <input id="preco" type="number" class="form-control" formControlName="preco">
-                <label for="nome" class="form-label">Nome</label>
-                <input id="nome" type="text" class="form-control" formControlName="nome"
-                    (blur)="verificarTelefone()">
-                <div *ngIf="mensagemErroTelefone" class="text-danger small mt-1">
-                    {{ mensagemErroTelefone }}
-                </div>
+                <label for="telefone" class="form-label">Telefone</label>
+                <input id="telefone" type="text" class="form-control" formControlName="telefone">
             </div>
-            <div class="col-md-3 mb-3">
-                <label for="preco" class="form-label">Preço</label>
-                <input id="preco" type="number" class="form-control" formControlName="preco">
-            </div>
-
-            <div class="col-md-3 mb-3">
-                <label for="duracao" class="form-label">Duração</label>
-                <input id="duracao" type="time" class="form-control" formControlName="duracao">
-            </div>
-            <div class="col-md-12 mb-3">
-                <label for="descricao" class="form-label">Descrição</label>
-                <input id="descricao" type="text" class="form-control" formControlName="descricao">
-            </div>
-
 
             <div class="d-flex justify-content-between">
                 <a routerLink="/app-procedimento" class="btn btn-secondary">

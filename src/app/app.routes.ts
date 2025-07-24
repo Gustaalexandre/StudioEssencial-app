@@ -22,4 +22,7 @@ export const routes: Routes = [
   { path: 'app-agendamento', component: AgendamentoComponent},
   { path: 'add-agendamento', component: AddAgendamentoComponent},
   { path: 'add-agendamento/:id', component: AddAgendamentoComponent },
+  // { path: 'app-telefone', component: TelefoneComponent },
+  // { path: 'add-telefone', component: AddTelefoneComponent },
+  // { path: 'add-telefone/:id', component: AddTelefoneComponent },
 ];

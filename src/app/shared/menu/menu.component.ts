@@ -20,6 +20,8 @@ export class MenuComponent {
     { descricao: 'Procedimentos', rota: '/app-procedimento', niveis: ['FUNCIONARIO'] },
     { descricao: 'Agendamentos', rota: '/app-agendamento', niveis: ['FUNCIONARIO', 'CLIENTE'] },
 
+    // { descricao: 'Telefones', rota: '/app-telefone', niveis: ['FUNCIONARIO'] },
+
     // { descricao: 'Produtos', rota: '/produtos', niveis: ['NIVEL1', 'NIVEL2'] },
     // { descricao: 'Usuários', rota: '/usuarios', niveis: ['NIVEL1'] },
     // { descricao: 'Pedidos', rota: '/pedidos', niveis: ['NIVEL2', 'NIVEL3'] },
