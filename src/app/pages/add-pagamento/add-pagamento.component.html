@@ -1,0 +1,41 @@
+<div class="container mt-4 card p-4">
+    <h2 class="mb-4 border-bottom border-3 border-danger text-center">Pagamentos</h2>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="datapagamento" class="form-label">Data de Pagamento</label>
+                <input id="datapagamento" type="date" class="form-control" formControlName="dataPagamento">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="datavencimento" class="form-label">Data de Vencimento</label>
+                <input id="datavencimento" type="date" class="form-control" formControlName="dataVencimento">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="valor" class="form-label">Valor</label>
+                <input id="valor" type="number" class="form-control" formControlName="valor">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="formapagamento" class="form-label">Forma de Pagamento</label>
+                <input id="formapagamento" type="text" class="form-control" formControlName="formaPagamento">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="numeroparcela" class="form-label">Número de Parcelas</label>
+                <input id="numeroparcela" type="number" class="form-control" formControlName="numeroParcela">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="agendamentoid" class="form-label">Agendamento ID</label>
+                <input id="agendamentoid" type="text" class="form-control" formControlName="agendamentoId">
+            </div>
+            <div class="d-flex justify-content-between">
+                <a routerLink="/app-pagamento" class="btn btn-secondary">
+                    Cancelar
+                </a>
+                <button type="submit" class="btn btn-success" [disabled]="formGroup.invalid">
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

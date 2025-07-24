@@ -1,0 +1,35 @@
+<div class="container mt-4">  
+  <h2 class="mb-4 border-bottom border-3 border-danger text-center">Pagamentos</h2>
+
+  <div class="d-flex justify-content-end mb-2">
+    <a routerLink="/add-pagamento" routerLinkActive="active" class="btn btn-primary">Cadastrar</a>
+  </div>
+
+  <table class="table table-bordered table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th class="col-datapagamento">Data de Pagamento</th>
+        <th class="col-dataVencimento">Data de Vencimento</th>
+        <th class="col-valor">Valor</th>
+        <th class="col-formaPagamento">Forma de Pagamento</th>
+        <th class="col-numeroParcela">Número da Parcelas</th>
+        <th class="col-agendamentoid">Agendamento ID</th>
+        <th class="col-actions text-center">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let objeto of lista">
+        <td>{{ objeto.dataPagamento | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ objeto.dataVencimento | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ objeto.valor | currency: 'BRL': 'symbol' }}</td>
+        <td>{{ objeto.formaPagamento }}</td>
+        <td>{{ objeto.numeroParcela }}</td>
+        <td>{{ objeto.agendamentoId }}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-warning me-2" (click)="editar(objeto.id)">Editar</button>
+          <button class="btn btn-sm btn-danger" (click)="excluir(objeto.id!)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -19,6 +19,7 @@ export class MenuComponent {
   menu = [
     { descricao: 'Procedimentos', rota: '/app-procedimento', niveis: ['FUNCIONARIO'] },
     { descricao: 'Agendamentos', rota: '/app-agendamento', niveis: ['FUNCIONARIO', 'CLIENTE'] },
+    { descricao: 'Pagamentos', rota: '/app-pagamento', niveis: ['FUNCIONARIO'] },
 
     // { descricao: 'Telefones', rota: '/app-telefone', niveis: ['FUNCIONARIO'] },
 
