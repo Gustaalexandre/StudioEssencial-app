@@ -40,7 +40,4 @@ export class ProcedimentoService {
     const url = `${this.apiUrl}/existe?nomeProcedimento=${encodeURIComponent(procedimento)}`;
     return this.http.get<boolean>(url, this.loginService.gerarCabecalhoHTTP());
   }
-
-
-
 }

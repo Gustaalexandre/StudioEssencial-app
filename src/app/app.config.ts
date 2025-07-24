@@ -18,5 +18,3 @@ export const appConfig: ApplicationConfig = {
 export const appSettings = {
   apiBaseUrl: 'http://localhost:8080'
 };
-
-

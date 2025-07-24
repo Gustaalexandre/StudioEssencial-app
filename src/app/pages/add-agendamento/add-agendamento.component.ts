@@ -107,7 +107,6 @@ export class AddAgendamentoComponent {
     });
   }
 
-
   carregarListaClientes(): void {
     this.usuarioService.listar().subscribe({
       next: (usuarios) => {
@@ -145,7 +144,4 @@ export class AddAgendamentoComponent {
       error: () => alert('Erro ao carregar usuários.')
     });
   }
-
-  
-
 }

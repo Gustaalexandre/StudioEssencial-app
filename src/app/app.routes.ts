@@ -8,8 +8,8 @@ import { AddProcedimentoComponent } from './pages/add-procedimento/add-procedime
 import { ProcedimentoComponent } from './pages/procedimento/procedimento.component';
 import { AddAgendamentoComponent } from './pages/add-agendamento/add-agendamento.component';
 import { AgendamentoComponent } from './pages/agendamento/agendamento.component';
-
-
+import { TelefoneComponent } from './pages/telefone/telefone.component';
+import { AddTelefoneComponent } from './pages/add-telefone/add-telefone.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,6 +22,4 @@ export const routes: Routes = [
   { path: 'app-agendamento', component: AgendamentoComponent},
   { path: 'add-agendamento', component: AddAgendamentoComponent},
   { path: 'add-agendamento/:id', component: AddAgendamentoComponent },
-  
-
 ];

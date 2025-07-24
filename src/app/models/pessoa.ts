@@ -3,6 +3,4 @@ export class Pessoa {
     nome?: string;
     sexo?: string;
     endereco?: string;
-    
-
 }

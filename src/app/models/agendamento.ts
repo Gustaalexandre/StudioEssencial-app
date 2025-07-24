@@ -9,5 +9,4 @@ export class Agendamento {
     situacao?: string;
     numeroParcelas?: number;
     valorTotal?: number;
-
 }

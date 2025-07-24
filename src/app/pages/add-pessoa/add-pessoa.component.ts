@@ -22,7 +22,6 @@ export class AddPessoaComponent {
 
   constructor(private formBuilder: FormBuilder, private service: UsuarioService, private route: ActivatedRoute, private router: Router, private pessoaService: PessoaService) {
 
-
     this.formGroup = this.formBuilder.group({
       id: [null],
       nome: ['', Validators.required],
@@ -49,7 +48,6 @@ export class AddPessoaComponent {
       pessoaData.sexo = this.formGroup.get('sexo')?.value;
       pessoaData.endereco = this.formGroup.get('endereco')?.value;
 
-
       this.pessoaService.salvar(pessoaData).subscribe({
         next: (pessoaSalva: Pessoa) => {
           // Após salvar a pessoa, salvar o usuário com o id da pessoa
@@ -59,7 +57,6 @@ export class AddPessoaComponent {
           usuarioData.senha = this.formGroup.get('senha')?.value;
           usuarioData.nivelAcesso = this.formGroup.get('nivelAcesso')?.value;
           usuarioData.pessoaId = pessoaSalva.id; // Aqui é o vínculo
-
 
           this.service.salvar(usuarioData).subscribe({
             next: () => {
@@ -79,8 +76,6 @@ export class AddPessoaComponent {
       });
     }
   }
-
-
 
   verificarLogin() {
     const login = this.formGroup.get('login')?.value;
@@ -113,6 +108,4 @@ export class AddPessoaComponent {
       }
     });
   }
-
-
 }

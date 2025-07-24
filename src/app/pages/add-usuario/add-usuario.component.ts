@@ -54,7 +54,6 @@ export class AddUsuarioComponent {
     }
   }
 
-
   verificarLogin() {
     const login = this.formGroup.get('login')?.value;
     this.mensagemErroLogin = "";
@@ -86,6 +85,4 @@ export class AddUsuarioComponent {
       }
     });
   }
-
-
 }

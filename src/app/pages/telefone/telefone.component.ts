@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule} from '@angular/router';
-import { ProcedimentoService } from '../../services/procedimento.service';
-import { Procedimento } from '../../models/procedimento';
+import { TelefoneService } from '../../services/telefone.service';
+import { Telefone } from '../../models/telefone';
 
 @Component({
-  selector: 'app-procedimento',
+  selector: 'app-telefone',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './procedimento.component.html',
-  styleUrl: './procedimento.component.css'
+  templateUrl: './telefone.component.html',
+  styleUrl: './telefone.component.css'
 })
 
-export class ProcedimentoComponent {
-  lista: Procedimento[] = [];
+export class TelefoneComponent {
+  lista: Telefone[] = [];
 
-  constructor(private service: ProcedimentoService, private route: ActivatedRoute, private router: Router) {
+  constructor(private service: TelefoneService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -46,7 +46,7 @@ export class ProcedimentoComponent {
     }
   }
 
-  editar(id: number): void {    
-    this.router.navigate(['/add-procedimento', id]);    
+  editar(id: number): void {
+    this.router.navigate(['/add-telefone', id]);
   }
 }

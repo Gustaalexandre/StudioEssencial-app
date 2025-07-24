@@ -5,7 +5,6 @@ import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { Procedimento } from '../../models/procedimento';
 import { ProcedimentoService } from '../../services/procedimento.service';
 
-
 @Component({
   selector: 'add-procedimento',
   standalone: true,
@@ -48,9 +47,6 @@ export class AddProcedimentoComponent {
         });
       });
     }
-
-    
-
   }
 
   onSubmit(): void {
@@ -67,7 +63,6 @@ export class AddProcedimentoComponent {
     //       alert('Erro ao criar procedimento. Tente novamente.');
     //     }
     //   });
-      
     // }
 
      if (this.formGroup.valid) {
@@ -86,7 +81,6 @@ export class AddProcedimentoComponent {
         }
       });
     }
-
   }
 
   //não ta usando token.
@@ -109,9 +103,5 @@ export class AddProcedimentoComponent {
         this.mensagemErroProcedimento = "Erro ao validar procedimento";
       }
     });
-
   }
-
-    
-
 }

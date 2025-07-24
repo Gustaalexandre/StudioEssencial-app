@@ -33,5 +33,4 @@ export class PessoaService {
   excluir(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`, this.loginService.gerarCabecalhoHTTP());
   }
-
 }

@@ -29,6 +29,5 @@ export class UsuarioService {
   verificarLogin(login: string): Observable<boolean> {
     const url = `${this.apiUrl}/existe?login=${encodeURIComponent(login)}`;
     return this.http.get<boolean>(url);
-  }  
-
+  }
 }
