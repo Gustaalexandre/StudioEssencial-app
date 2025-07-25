@@ -68,7 +68,7 @@ export class AddProcedimentoComponent {
      if (this.formGroup.valid) {
        this.procedimento.nome = this.formGroup.value.nome;
       this.procedimento.descricao = this.formGroup.value.descricao;
-      this.procedimento.preco = this.formGroup.value.valor;
+      this.procedimento.preco = this.formGroup.value.preco;
       this.procedimento.duracao = this.formGroup.value.duracao;
       this.service.salvar(this.procedimento).subscribe({
         next: () => {

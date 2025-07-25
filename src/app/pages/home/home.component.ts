@@ -23,7 +23,10 @@ export class HomeComponent implements OnInit {
         this.agendamentos = dados;
         this.contarSituacoes();
       },
-      error: () => alert('Erro ao carregar agendamentos.')
+      error: () => {
+  console.log("Erro ao carregar dados!");
+}
+
     });
   }
 

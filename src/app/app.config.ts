@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
 };
 
 export const appSettings = {
-  // apiBaseUrl: 'http://localhost:8080'
-  apiBaseUrl: 'https://studioessecial-api.onrender.com'
+  apiBaseUrl: 'http://localhost:8080'
+  //apiBaseUrl: 'https://studioessecial-api.onrender.com'
 
 };
