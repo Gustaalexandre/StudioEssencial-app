@@ -72,18 +72,12 @@ export class AddPagamentoComponent implements OnInit {
 
       this.service.salvar(this.pagamento).subscribe({
         next: () => {
-          this.snackBar.open('Registro salvo com sucesso!', 'Fechar', {
-            duration: 3000,
-            panelClass: ['snackbar-success']
-          });
+          alert('Registro salvo com sucesso!');
           this.formGroup.reset();
           this.router.navigate(['/app-pagamento']);
         },
         error: () => {
-          this.snackBar.open('Erro ao salvar o registro. Tente novamente.', 'Fechar', {
-            duration: 3000,
-            panelClass: ['snackbar-error']
-          });
+          alert('Erro ao salvar o registro. Tente novamente.');
         }
       });
     }
